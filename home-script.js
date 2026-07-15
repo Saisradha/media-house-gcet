@@ -5,6 +5,32 @@ AOS.init({
     offset: 100
 });
 
+function syncThemeToggle(theme) {
+    const themeToggle = document.getElementById('theme-toggle');
+    if (!themeToggle) return;
+
+    const icon = themeToggle.querySelector('i');
+    const label = themeToggle.querySelector('span');
+
+    if (theme === 'dark') {
+        icon.className = 'fas fa-sun';
+        label.textContent = 'Light Mode';
+        themeToggle.setAttribute('aria-label', 'Switch to light mode');
+    } else {
+        icon.className = 'fas fa-moon';
+        label.textContent = 'Dark Mode';
+        themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+    }
+}
+
+function setTheme(theme) {
+    const isDark = theme === 'dark';
+    document.documentElement.classList.toggle('dark-mode', isDark);
+    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    localStorage.setItem('media-house-theme', isDark ? 'dark' : 'light');
+    syncThemeToggle(isDark ? 'dark' : 'light');
+}
+
 // Three.js 3D Background Animation with Media-Related Elements
 function init3DBackground() {
     const canvas = document.getElementById('heroCanvas');
@@ -198,6 +224,22 @@ function animateCounter(target) {
 window.addEventListener('load', () => {
     updateVisitorCount();
     init3DBackground();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('theme-toggle');
+    const storedTheme = localStorage.getItem('media-house-theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
+
+    setTheme(initialTheme);
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const nextTheme = document.documentElement.classList.contains('dark-mode') ? 'light' : 'dark';
+            setTheme(nextTheme);
+        });
+    }
 });
 
 // Smooth scroll for navigation links
