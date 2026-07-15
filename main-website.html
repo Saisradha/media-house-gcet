@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Media House - Official Media & PR Club of GCET</title>
+    <script>
+        (function () {
+            const storedTheme = localStorage.getItem('media-house-theme');
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = storedTheme || (prefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -58,6 +66,7 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.9);
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             z-index: 1000;
             opacity: 0;
@@ -281,6 +290,7 @@
         .countdown-box {
             background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(0, 0, 0, 0.3));
             border: 1px solid rgba(239, 68, 68, 0.3);
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
             animation: magical-border 3s ease-in-out infinite;
@@ -484,15 +494,212 @@
             opacity: 1;
             transform: rotate(0deg) scale(1);
         }
+
+        :root {
+            --page-bg-light: radial-gradient(circle at top, #ffffff 0%, #f6f7fb 42%, #eef2f8 100%);
+            --page-bg-dark: radial-gradient(circle at top, #1b1010 0%, #0a0a0d 45%, #050506 100%);
+            --surface-light: rgba(255, 255, 255, 0.86);
+            --surface-light-strong: rgba(255, 255, 255, 0.96);
+            --surface-dark: rgba(12, 12, 16, 0.78);
+            --surface-dark-strong: rgba(18, 18, 24, 0.94);
+            --text-light: #0f172a;
+            --text-light-soft: #475569;
+            --text-dark: #f8fafc;
+            --text-dark-soft: #cbd5e1;
+        }
+
+        .theme-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            font-weight: 700;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.16);
+        }
+        .theme-toggle:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 14px 30px rgba(239, 68, 68, 0.18);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        html[data-theme="dark"] body {
+            background: var(--page-bg-dark);
+            color: var(--text-dark);
+        }
+        html[data-theme="dark"] #main-content {
+            background:
+                radial-gradient(circle at top left, rgba(239, 68, 68, 0.08), transparent 20%),
+                radial-gradient(circle at top right, rgba(251, 191, 36, 0.05), transparent 18%),
+                var(--page-bg-dark);
+        }
+        html[data-theme="dark"] .bg-black,
+        html[data-theme="dark"] .bg-black\/80,
+        html[data-theme="dark"] .bg-black\/70,
+        html[data-theme="dark"] .bg-black\/50 {
+            background-color: rgba(5, 5, 8, 0.94) !important;
+        }
+        html[data-theme="dark"] .bg-gray-900 {
+            background: linear-gradient(180deg, rgba(20, 20, 28, 0.92), rgba(10, 10, 14, 0.96)) !important;
+            border-color: rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.12), 0 24px 60px rgba(239, 68, 68, 0.12), 0 0 90px rgba(239, 68, 68, 0.04) !important;
+            -webkit-backdrop-filter: blur(18px);
+            backdrop-filter: blur(18px);
+        }
+        html[data-theme="dark"] .bg-gray-800 {
+            background: linear-gradient(180deg, rgba(24, 24, 32, 0.9), rgba(14, 14, 18, 0.94)) !important;
+            border-color: rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.08), 0 16px 36px rgba(0, 0, 0, 0.28) !important;
+        }
+        html[data-theme="dark"] .text-white {
+            color: #ffffff !important;
+        }
+        html[data-theme="dark"] .text-gray-300 {
+            color: var(--text-dark-soft) !important;
+        }
+        html[data-theme="dark"] .text-gray-400 {
+            color: #94a3b8 !important;
+        }
+        html[data-theme="dark"] .border-gray-800,
+        html[data-theme="dark"] .border-gray-900 {
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+        html[data-theme="dark"] .hero-bg {
+            background-color: #050506;
+            background-image:
+                radial-gradient(circle at 20% 20%, rgba(239, 68, 68, 0.12), transparent 0 24%),
+                radial-gradient(circle at 80% 0%, rgba(251, 191, 36, 0.08), transparent 0 18%),
+                radial-gradient(#1a1a1a 1px, transparent 1px);
+            background-size: 20px 20px, 20px 20px, 20px 20px;
+        }
+        html[data-theme="dark"] .text-glow {
+            text-shadow: 0 0 10px rgba(239, 68, 68, 0.7), 0 0 24px rgba(239, 68, 68, 0.45), 0 0 44px rgba(239, 68, 68, 0.2);
+        }
+        html[data-theme="dark"] .service-card,
+        html[data-theme="dark"] .stat-box,
+        html[data-theme="dark"] .team-card,
+        html[data-theme="dark"] .countdown-box,
+        html[data-theme="dark"] .modal-content,
+        html[data-theme="dark"] .carousel-container,
+        html[data-theme="dark"] #contact .bg-gray-900,
+        html[data-theme="dark"] #about .bg-gray-900 {
+            box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.12), 0 18px 50px rgba(0, 0, 0, 0.34), 0 0 80px rgba(239, 68, 68, 0.08);
+        }
+        html[data-theme="dark"] .carousel-slide img,
+        html[data-theme="dark"] .team-card img,
+        html[data-theme="dark"] .modal-image {
+            box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.18), 0 18px 60px rgba(239, 68, 68, 0.15);
+            filter: saturate(1.08) contrast(1.04);
+        }
+        html[data-theme="dark"] .theme-toggle {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        html[data-theme="light"] body {
+            background: var(--page-bg-light);
+            color: var(--text-light);
+        }
+        html[data-theme="light"] #main-content {
+            background:
+                radial-gradient(circle at top left, rgba(239, 68, 68, 0.06), transparent 20%),
+                radial-gradient(circle at top right, rgba(251, 191, 36, 0.06), transparent 18%),
+                var(--page-bg-light);
+        }
+        html[data-theme="light"] .bg-black,
+        html[data-theme="light"] .bg-black\/80,
+        html[data-theme="light"] .bg-black\/70,
+        html[data-theme="light"] .bg-black\/50 {
+            background-color: rgba(255, 255, 255, 0.78) !important;
+        }
+        html[data-theme="light"] .bg-gray-900 {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 249, 252, 0.96)) !important;
+            border-color: rgba(15, 23, 42, 0.08) !important;
+            box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(239, 68, 68, 0.08) !important;
+            -webkit-backdrop-filter: blur(18px);
+            backdrop-filter: blur(18px);
+        }
+        html[data-theme="light"] .bg-gray-800 {
+            background: linear-gradient(180deg, rgba(250, 251, 255, 0.96), rgba(239, 243, 248, 0.96)) !important;
+            border-color: rgba(15, 23, 42, 0.08) !important;
+            box-shadow: 0 16px 36px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(239, 68, 68, 0.06) !important;
+        }
+        html[data-theme="light"] .text-white {
+            color: var(--text-light) !important;
+        }
+        html[data-theme="light"] .text-gray-300,
+        html[data-theme="light"] .text-gray-400,
+        html[data-theme="light"] .text-gray-500 {
+            color: var(--text-light-soft) !important;
+        }
+        html[data-theme="light"] .border-gray-800,
+        html[data-theme="light"] .border-gray-900 {
+            border-color: rgba(15, 23, 42, 0.08) !important;
+        }
+        html[data-theme="light"] .hero-bg {
+            background-color: #f4f6fb;
+            background-image:
+                radial-gradient(circle at 20% 20%, rgba(239, 68, 68, 0.09), transparent 0 24%),
+                radial-gradient(circle at 80% 0%, rgba(251, 191, 36, 0.07), transparent 0 18%),
+                radial-gradient(#d5dbe7 1px, transparent 1px);
+            background-size: 20px 20px, 20px 20px, 20px 20px;
+        }
+        html[data-theme="light"] .theme-toggle {
+            color: #0f172a;
+            background: rgba(255, 255, 255, 0.82);
+            border-color: rgba(239, 68, 68, 0.15);
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+        }
+        html[data-theme="light"] .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        html[data-theme="light"] .service-card,
+        html[data-theme="light"] .stat-box,
+        html[data-theme="light"] .team-card,
+        html[data-theme="light"] .countdown-box,
+        html[data-theme="light"] .modal-content,
+        html[data-theme="light"] .carousel-container,
+        html[data-theme="light"] #contact .bg-gray-900,
+        html[data-theme="light"] #about .bg-gray-900 {
+            box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(239, 68, 68, 0.08), 0 0 80px rgba(239, 68, 68, 0.04);
+        }
+
+        .surface-glass {
+            -webkit-backdrop-filter: blur(18px);
+            backdrop-filter: blur(18px);
+        }
+
+        .bg-canvas-layer {
+            z-index: 1;
+        }
+
+        .launcher-hidden {
+            display: none;
+        }
+
+        .main-content-shell {
+            position: relative;
+            z-index: 10;
+        }
+
+        .site-header-shell {
+            position: relative;
+            z-index: 100;
+        }
     </style>
 </head>
 <body class="bg-black text-white min-h-screen relative">
     <!-- Full-page animated background canvas -->
-    <canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full" style="z-index: 1;"></canvas>
+    <canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full bg-canvas-layer"></canvas>
 
     <!-- Launcher Section -->
     <!-- Launcher - DISABLED -->
-    <div id="launcher" class="fixed top-0 left-0 w-full h-full bg-[#0a0a0a] z-[9999] flex flex-col items-center justify-center transition-opacity duration-1000 ease-in-out launcher-fade-in" style="display: none;">
+    <div id="launcher" class="fixed top-0 left-0 w-full h-full bg-[#0a0a0a] z-[9999] flex flex-col items-center justify-center transition-opacity duration-1000 ease-in-out launcher-fade-in launcher-hidden">
         <div class="animate-pulse">
             <!-- PASTE YOUR SVG CODE HERE -->
              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" width="375" height="375" viewBox="0 0 375 375">
@@ -2486,9 +2693,9 @@ AACR4f8BsYcUjkLLCNIAAAAASUVORK5CYII="/>
     </div>
 
     <!-- Main Website Content -->
-    <div id="main-content" class="opacity-100" style="position: relative; z-index: 10;">
+    <div id="main-content" class="opacity-100 main-content-shell">
         <!-- Header -->
-        <header id="home" class="bg-black/80 backdrop-blur-md fixed w-full z-50 top-0 border-b border-gray-800" style="position: relative; z-index: 100;">
+        <header id="home" class="bg-black/80 backdrop-blur-md fixed w-full z-50 top-0 border-b border-gray-800 site-header-shell">
             <div class="container mx-auto px-6 py-4 flex justify-between items-center">
                 <a href="#home" class="flex items-center space-x-2">
                     <!-- SVG Logo -->
@@ -2505,7 +2712,11 @@ AACR4f8BsYcUjkLLCNIAAAAASUVORK5CYII="/>
                     <a href="#team" class="hover:text-red-500 transition-colors duration-300">Team</a>
                     <a href="#contact" class="hover:text-red-500 transition-colors duration-300">Contact</a>
                 </nav>
-                <button id="menu-btn" class="md:hidden">
+                <button id="theme-toggle" class="theme-toggle hidden md:inline-flex ml-4" type="button" aria-label="Toggle dark mode">
+                    <i data-lucide="moon-star" class="w-4 h-4"></i>
+                    <span>Dark Mode</span>
+                </button>
+                <button id="menu-btn" class="md:hidden" type="button" aria-label="Open mobile menu">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
@@ -2661,7 +2872,7 @@ AACR4f8BsYcUjkLLCNIAAAAASUVORK5CYII="/>
                         <div class="carousel-track" id="carousel-track">
                             <!-- Slide 1 -->
                             <div class="carousel-slide">
-                                <img src="https://placehold.co/1200x500/1f2937/ef4444?text=Annual+Fest+2025" alt="Annual Fest Coverage">
+                                <img src="https://picsum.photos/seed/annual-fest-2025/1200/500" alt="Annual Fest Coverage">
                                 <div class="absolute bottom-8 left-8 bg-black/70 backdrop-blur-sm p-6 rounded-xl max-w-md">
                                     <h3 class="text-2xl font-bold text-white mb-2">Annual Fest 2025</h3>
                                     <p class="text-gray-300">Complete coverage of GCET's biggest cultural festival</p>
@@ -2669,7 +2880,7 @@ AACR4f8BsYcUjkLLCNIAAAAASUVORK5CYII="/>
                             </div>
                             <!-- Slide 2 -->
                             <div class="carousel-slide">
-                                <img src="https://placehold.co/1200x500/1f2937/fbbf24?text=Tech+Symposium" alt="Tech Symposium">
+                                <img src="https://picsum.photos/seed/tech-symposium/1200/500" alt="Tech Symposium">
                                 <div class="absolute bottom-8 left-8 bg-black/70 backdrop-blur-sm p-6 rounded-xl max-w-md">
                                     <h3 class="text-2xl font-bold text-white mb-2">Tech Symposium</h3>
                                     <p class="text-gray-300">Documenting innovation and technology talks</p>
@@ -2677,7 +2888,7 @@ AACR4f8BsYcUjkLLCNIAAAAASUVORK5CYII="/>
                             </div>
                             <!-- Slide 3 -->
                             <div class="carousel-slide">
-                                <img src="https://placehold.co/1200x500/1f2937/3b82f6?text=Sports+Meet" alt="Sports Meet">
+                                <img src="https://picsum.photos/seed/sports-meet/1200/500" alt="Sports Meet">
                                 <div class="absolute bottom-8 left-8 bg-black/70 backdrop-blur-sm p-6 rounded-xl max-w-md">
                                     <h3 class="text-2xl font-bold text-white mb-2">Inter-College Sports Meet</h3>
                                     <p class="text-gray-300">Capturing the spirit of competition and teamwork</p>
@@ -2685,7 +2896,7 @@ AACR4f8BsYcUjkLLCNIAAAAASUVORK5CYII="/>
                             </div>
                             <!-- Slide 4 -->
                             <div class="carousel-slide">
-                                <img src="https://placehold.co/1200x500/1f2937/10b981?text=Freshers+Welcome" alt="Freshers Welcome">
+                                <img src="https://picsum.photos/seed/freshers-welcome/1200/500" alt="Freshers Welcome">
                                 <div class="absolute bottom-8 left-8 bg-black/70 backdrop-blur-sm p-6 rounded-xl max-w-md">
                                     <h3 class="text-2xl font-bold text-white mb-2">Freshers' Welcome 2025</h3>
                                     <p class="text-gray-300">Welcoming new students to the GCET family</p>
@@ -2693,7 +2904,7 @@ AACR4f8BsYcUjkLLCNIAAAAASUVORK5CYII="/>
                             </div>
                             <!-- Slide 5 -->
                             <div class="carousel-slide">
-                                <img src="https://placehold.co/1200x500/1f2937/ef4444?text=Guest+Lectures" alt="Guest Lectures">
+                                <img src="https://picsum.photos/seed/guest-lectures/1200/500" alt="Guest Lectures">
                                 <div class="absolute bottom-8 left-8 bg-black/70 backdrop-blur-sm p-6 rounded-xl max-w-md">
                                     <h3 class="text-2xl font-bold text-white mb-2">Distinguished Guest Lectures</h3>
                                     <p class="text-gray-300">Recording knowledge sessions from industry experts</p>
@@ -2702,10 +2913,10 @@ AACR4f8BsYcUjkLLCNIAAAAASUVORK5CYII="/>
                         </div>
                         
                         <!-- Navigation Buttons -->
-                        <button class="carousel-button prev" id="carousel-prev">
+                        <button class="carousel-button prev" id="carousel-prev" type="button" aria-label="Previous portfolio slide">
                             <i data-lucide="chevron-left"></i>
                         </button>
-                        <button class="carousel-button next" id="carousel-next">
+                        <button class="carousel-button next" id="carousel-next" type="button" aria-label="Next portfolio slide">
                             <i data-lucide="chevron-right"></i>
                         </button>
                         
@@ -2729,8 +2940,8 @@ AACR4f8BsYcUjkLLCNIAAAAASUVORK5CYII="/>
                              data-role="Faculty Coordinator"
                              data-department="Assistant Professor, CSE"
                              data-bio="Mr. Rahul Das is the guiding force behind Media House, bringing years of experience in media, communications, and technology. As an Assistant Professor in Computer Science Engineering, he mentors the team with innovative ideas and ensures the club maintains professional standards in all its endeavors."
-                             data-image="https://placehold.co/150x150/1f2937/ef4444?text=RD">
-                            <img src="https://placehold.co/128x128/1f2937/ef4444?text=RD" alt="Mr. Rahul Das" class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-red-500">
+                             data-image="https://picsum.photos/seed/rahul-das/150/150">
+                            <img src="https://picsum.photos/seed/rahul-das/128/128" alt="Mr. Rahul Das" class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-red-500">
                             <h3 class="text-xl font-semibold text-white">Mr. Rahul Das</h3>
                             <p class="text-red-500">Faculty Coordinator</p>
                             <p class="text-gray-400 text-sm">Assistant Professor, CSE</p>
@@ -2742,8 +2953,8 @@ AACR4f8BsYcUjkLLCNIAAAAASUVORK5CYII="/>
                              data-role="Founding Co-Member"
                              data-department=""
                              data-bio="Rayan Kelly is one of the founding members of Media House, instrumental in establishing the club's vision and core values. With a passion for storytelling and media innovation, Rayan has been pivotal in shaping the club's creative direction and building a strong foundation for future generations."
-                             data-image="https://placehold.co/150x150/1f2937/ffffff?text=RK">
-                            <img src="https://placehold.co/128x128/1f2937/ffffff?text=RK" alt="Rayan Kelly" class="w-24 h-24 rounded-full mx-auto mb-4">
+                             data-image="https://picsum.photos/seed/rayan-kelly/150/150">
+                            <img src="https://picsum.photos/seed/rayan-kelly/128/128" alt="Rayan Kelly" class="w-24 h-24 rounded-full mx-auto mb-4">
                             <h3 class="text-xl font-semibold text-white">Rayan Kelly</h3>
                             <p class="text-red-500">Founding Co-Member</p>
                             <span class="click-hint">👆 Click to view bio</span>
@@ -2753,8 +2964,8 @@ AACR4f8BsYcUjkLLCNIAAAAASUVORK5CYII="/>
                              data-role="Founding Co-Member"
                              data-department=""
                              data-bio="Kammari Tharun, a founding co-member, has been essential in bringing Media House to life. His dedication to excellence and collaborative spirit have helped establish the club as a premier platform for media and public relations at GCET. Tharun continues to drive innovation and creativity across all club initiatives."
-                             data-image="https://placehold.co/150x150/1f2937/ffffff?text=KT">
-                            <img src="https://placehold.co/128x128/1f2937/ffffff?text=KT" alt="Kammari Tharun" class="w-24 h-24 rounded-full mx-auto mb-4">
+                             data-image="https://picsum.photos/seed/kammari-tharun/150/150">
+                            <img src="https://picsum.photos/seed/kammari-tharun/128/128" alt="Kammari Tharun" class="w-24 h-24 rounded-full mx-auto mb-4">
                             <h3 class="text-xl font-semibold text-white">Kammari Tharun</h3>
                             <p class="text-red-500">Founding Co-Member</p>
                             <span class="click-hint">👆 Click to view bio</span>
@@ -2764,8 +2975,8 @@ AACR4f8BsYcUjkLLCNIAAAAASUVORK5CYII="/>
                              data-role="AB&O Head"
                              data-department=""
                              data-bio="Saimithil Karmakonda leads the Announcements, Broadcasting & Operations wing, ensuring seamless communication and event management. With exceptional organizational skills and attention to detail, Saimithil coordinates all club activities, manages broadcasting operations, and keeps the team informed and engaged."
-                             data-image="https://placehold.co/150x150/1f2937/ffffff?text=SK">
-                            <img src="https://placehold.co/128x128/1f2937/ffffff?text=SK" alt="Saimithil Karmakonda" class="w-24 h-24 rounded-full mx-auto mb-4">
+                             data-image="https://picsum.photos/seed/saimithil-karmakonda/150/150">
+                            <img src="https://picsum.photos/seed/saimithil-karmakonda/128/128" alt="Saimithil Karmakonda" class="w-24 h-24 rounded-full mx-auto mb-4">
                             <h3 class="text-xl font-semibold text-white">Saimithil Karmakonda</h3>
                             <p class="text-red-500">AB&O Head</p>
                             <span class="click-hint">👆 Click to view bio</span>
@@ -2775,8 +2986,8 @@ AACR4f8BsYcUjkLLCNIAAAAASUVORK5CYII="/>
                              data-role="Social Media Lead"
                              data-department=""
                              data-bio="H.Sai Lochan manages Media House's digital presence and social media strategy. With a keen understanding of online trends and audience engagement, Lochan creates compelling content, manages platforms, and amplifies the club's reach across various social media channels, keeping followers updated and engaged."
-                             data-image="https://placehold.co/150x150/1f2937/ffffff?text=HL">
-                            <img src="https://placehold.co/128x128/1f2937/ffffff?text=HL" alt="H.Sai Lochan" class="w-24 h-24 rounded-full mx-auto mb-4">
+                             data-image="https://picsum.photos/seed/sai-lochan/150/150">
+                            <img src="https://picsum.photos/seed/sai-lochan/128/128" alt="H.Sai Lochan" class="w-24 h-24 rounded-full mx-auto mb-4">
                             <h3 class="text-xl font-semibold text-white">H.Sai Lochan</h3>
                             <p class="text-red-500">Social Media Lead</p>
                             <span class="click-hint">👆 Click to view bio</span>
@@ -2786,8 +2997,8 @@ AACR4f8BsYcUjkLLCNIAAAAASUVORK5CYII="/>
                              data-role="Social Media Lead"
                              data-department=""
                              data-bio="P.Likitha co-leads the social media team, bringing creativity and strategic thinking to Media House's online presence. She crafts engaging posts, analyzes social media metrics, and works closely with content creators to ensure consistent and impactful communication across all digital platforms."
-                             data-image="https://placehold.co/150x150/1f2937/ffffff?text=PL">
-                            <img src="https://placehold.co/128x128/1f2937/ffffff?text=PL" alt="P.Likitha" class="w-24 h-24 rounded-full mx-auto mb-4">
+                             data-image="https://picsum.photos/seed/p-likitha/150/150">
+                            <img src="https://picsum.photos/seed/p-likitha/128/128" alt="P.Likitha" class="w-24 h-24 rounded-full mx-auto mb-4">
                             <h3 class="text-xl font-semibold text-white">P.Likitha</h3>
                             <p class="text-red-500">Social Media Lead</p>
                             <span class="click-hint">👆 Click to view bio</span>
@@ -2797,8 +3008,8 @@ AACR4f8BsYcUjkLLCNIAAAAASUVORK5CYII="/>
                              data-role="Content Creation Lead"
                              data-department=""
                              data-bio="T.Sai Hanvika heads the content creation team, developing original and engaging content for various platforms. From writing compelling articles to creating multimedia presentations, Hanvika ensures that every piece of content reflects Media House's commitment to quality and creativity."
-                             data-image="https://placehold.co/150x150/1f2937/ffffff?text=TS">
-                            <img src="https://placehold.co/128x128/1f2937/ffffff?text=TS" alt="T.Sai Hanvika" class="w-24 h-24 rounded-full mx-auto mb-4">
+                             data-image="https://picsum.photos/seed/sai-hanvika/150/150">
+                            <img src="https://picsum.photos/seed/sai-hanvika/128/128" alt="T.Sai Hanvika" class="w-24 h-24 rounded-full mx-auto mb-4">
                             <h3 class="text-xl font-semibold text-white">T.Sai Hanvika</h3>
                             <p class="text-red-500">Content Creation Lead</p>
                             <span class="click-hint">👆 Click to view bio</span>
@@ -2808,8 +3019,8 @@ AACR4f8BsYcUjkLLCNIAAAAASUVORK5CYII="/>
                              data-role="Videography Lead"
                              data-department=""
                              data-bio="N.Akash Reddy leads the videography team, capturing and documenting all major events and activities at GCET. With a creative eye and technical expertise, Akash produces high-quality videos that tell compelling stories and showcase the vibrant campus life through the lens."
-                             data-image="https://placehold.co/150x150/1f2937/ffffff?text=NA">
-                            <img src="https://placehold.co/128x128/1f2937/ffffff?text=NA" alt="N.Akash Reddy" class="w-24 h-24 rounded-full mx-auto mb-4">
+                             data-image="https://picsum.photos/seed/akash-reddy/150/150">
+                            <img src="https://picsum.photos/seed/akash-reddy/128/128" alt="N.Akash Reddy" class="w-24 h-24 rounded-full mx-auto mb-4">
                             <h3 class="text-xl font-semibold text-white">N.Akash Reddy</h3>
                             <p class="text-red-500">Videography Lead</p>
                             <span class="click-hint">👆 Click to view bio</span>
@@ -2819,8 +3030,8 @@ AACR4f8BsYcUjkLLCNIAAAAASUVORK5CYII="/>
                              data-role="Design Lead"
                              data-department=""
                              data-bio="N.Bhavana is the creative force behind Media House's visual identity. As Design Lead, she creates stunning graphics, posters, and promotional materials that capture attention and communicate the club's message effectively. Her designs blend creativity with strategic communication."
-                             data-image="https://placehold.co/150x150/1f2937/ffffff?text=NB">
-                            <img src="https://placehold.co/128x128/1f2937/ffffff?text=NB" alt="N.Bhavana" class="w-24 h-24 rounded-full mx-auto mb-4">
+                             data-image="https://picsum.photos/seed/bhavana/150/150">
+                            <img src="https://picsum.photos/seed/bhavana/128/128" alt="N.Bhavana" class="w-24 h-24 rounded-full mx-auto mb-4">
                             <h3 class="text-xl font-semibold text-white">N.Bhavana</h3>
                             <p class="text-red-500">Design Lead</p>
                             <span class="click-hint">👆 Click to view bio</span>
@@ -2830,8 +3041,8 @@ AACR4f8BsYcUjkLLCNIAAAAASUVORK5CYII="/>
                               data-role="Editing Lead"
                               data-department=""
                               data-bio="M.Shreyesh leads the editing team, transforming raw footage into polished, professional content. With expertise in video editing software and a keen sense of storytelling, Shreyesh ensures that every video produced by Media House meets the highest standards of quality and engagement."
-                              data-image="https://placehold.co/150x150/1f2937/ffffff?text=MS">
-                            <img src="https://placehold.co/128x128/1f2937/ffffff?text=MS" alt="M.Shreyesh" class="w-24 h-24 rounded-full mx-auto mb-4">
+                                                            data-image="https://picsum.photos/seed/shreyesh/150/150">
+                                                        <img src="https://picsum.photos/seed/shreyesh/128/128" alt="M.Shreyesh" class="w-24 h-24 rounded-full mx-auto mb-4">
                             <h3 class="text-xl font-semibold text-white">M.Shreyesh</h3>
                             <p class="text-red-500">Editing Lead</p>
                             <span class="click-hint">👆 Click to view bio</span>
@@ -2865,6 +3076,20 @@ AACR4f8BsYcUjkLLCNIAAAAASUVORK5CYII="/>
                                 <i data-lucide="phone" class="w-4 h-4 mr-2"></i>
                                 9515572669
                             </p>
+                        </div>
+                    </div>
+
+                    <div class="text-center mb-16">
+                        <p class="text-gray-400 mb-6">Follow Media House for event updates, reels, and campus coverage.</p>
+                        <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                            <a href="https://www.instagram.com/mediahouse.gcet/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-5 py-3 rounded-lg border border-red-500 text-red-400 hover:bg-red-500 hover:text-white transition-all duration-300">
+                                <i data-lucide="instagram" class="w-4 h-4 mr-2"></i>
+                                Instagram @mediahouse.gcet
+                            </a>
+                            <a href="https://in.linkedin.com/company/mediahousegcet" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-5 py-3 rounded-lg border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white transition-all duration-300">
+                                <i data-lucide="linkedin" class="w-4 h-4 mr-2"></i>
+                                LinkedIn Media House GCET
+                            </a>
                         </div>
                     </div>
                     
@@ -2933,6 +3158,47 @@ AACR4f8BsYcUjkLLCNIAAAAASUVORK5CYII="/>
     </div>
 
     <script>
+        const THEME_STORAGE_KEY = 'media-house-theme';
+
+        function getPreferredTheme() {
+            const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+            if (storedTheme === 'dark' || storedTheme === 'light') {
+                return storedTheme;
+            }
+
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            return prefersDark ? 'dark' : 'light';
+        }
+
+        function syncThemeToggle(theme) {
+            const toggle = document.getElementById('theme-toggle');
+            if (!toggle) return;
+
+            toggle.innerHTML = theme === 'dark'
+                ? '<span aria-hidden="true">☀</span><span>Light Mode</span>'
+                : '<span aria-hidden="true">☾</span><span>Dark Mode</span>';
+            toggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+        }
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem(THEME_STORAGE_KEY, theme);
+            syncThemeToggle(theme);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const initialTheme = getPreferredTheme();
+            applyTheme(initialTheme);
+
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+                    applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+                });
+            }
+        });
+
         window.addEventListener('load', () => {
             // Full-page 3D animated background using Three.js
             const canvas = document.getElementById('bg-canvas');
