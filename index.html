@@ -389,22 +389,19 @@
                     <i data-lucide="search" class="w-5 h-5 absolute left-4 top-3.5 text-gray-400"></i>
                 </div>
 
-                <!-- Team Cards Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    
                 <!-- Faculty Spotlight Card -->
-                <div class="glass-card p-8 md:p-10 mb-12 border-red-500/40 relative overflow-hidden team-flip-card" data-name="Mr. Rahul Das" data-role="Faculty Coordinator" data-department="CSE">
-                    <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="glass-card p-8 md:p-10 mb-12 border-red-500/40 relative overflow-hidden committee-card-spotlight" data-name="Mr. Rahul Das" data-role="Faculty Coordinator" data-department="CSE">
+                    <div class="flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
                         <div class="relative flex-shrink-0">
                             <div class="w-32 h-32 rounded-full p-1 bg-gradient-to-tr from-red-600 to-red-400">
                                 <img src="https://placehold.co/150x150/1f2937/ef4444?text=RD" alt="Mr. Rahul Das" class="w-full h-full rounded-full object-cover">
                             </div>
                             <span class="absolute bottom-0 right-0 bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full border border-black uppercase">Faculty</span>
                         </div>
-                        <div class="text-center md:text-left">
+                        <div>
                             <div class="eyebrow-badge mb-2">FACULTY COORDINATOR</div>
                             <h3 class="text-2xl md:text-3xl font-bold text-white">Mr. Rahul Das</h3>
-                            <p class="text-red-500 font-semibold text-sm">Assistant Professor, Computer Science & Engineering</p>
+                            <p class="text-red-500 font-semibold text-sm mt-1">Assistant Professor, Computer Science & Engineering</p>
                             <p class="text-gray-300 text-sm mt-3 leading-relaxed max-w-3xl">
                                 Guiding force behind Media House GCET, bringing years of expertise in communications, digital media, and technology to mentor the student committee and uphold academic excellence.
                             </p>
@@ -413,134 +410,70 @@
                 </div>
 
                 <!-- Student Committee Members Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     
                     <!-- Member 1: Rayan Kelly -->
-                    <div class="team-flip-card" data-name="Rayan Kelly" data-role="Founding Co-Member">
-                        <div class="team-flip-inner">
-                            <div class="team-flip-front">
-                                <img src="https://placehold.co/120x120/1f2937/ffffff?text=RK" alt="Rayan Kelly" class="w-20 h-20 rounded-full mb-4 object-cover border border-red-500/30">
-                                <h3 class="text-lg font-bold text-white">Rayan Kelly</h3>
-                                <p class="text-red-500 text-xs font-semibold mt-1">Founding Co-Member</p>
-                                <span class="text-[10px] text-gray-500 mt-4">Hover to flip bio &rarr;</span>
-                            </div>
-                            <div class="team-flip-back">
-                                <h4 class="text-md font-bold text-white mb-2">Rayan Kelly</h4>
-                                <p class="text-xs text-gray-300">Founding member instrumental in establishing Media House GCET's initial vision and creative direction.</p>
-                            </div>
-                        </div>
+                    <div class="committee-card" data-name="Rayan Kelly" data-role="Founding Co-Member">
+                        <img src="https://placehold.co/120x120/1f2937/ffffff?text=RK" alt="Rayan Kelly" class="committee-avatar mb-4">
+                        <h3 class="text-lg font-bold text-white">Rayan Kelly</h3>
+                        <span class="committee-role-badge">Founding Co-Member</span>
+                        <p class="text-xs text-gray-400 leading-relaxed">Founding member instrumental in establishing Media House GCET's initial vision and creative direction.</p>
                     </div>
 
                     <!-- Member 2: Kammari Tharun -->
-                    <div class="team-flip-card" data-name="Kammari Tharun" data-role="Founding Co-Member">
-                        <div class="team-flip-inner">
-                            <div class="team-flip-front">
-                                <img src="https://placehold.co/120x120/1f2937/ffffff?text=KT" alt="Kammari Tharun" class="w-20 h-20 rounded-full mb-4 object-cover border border-red-500/30">
-                                <h3 class="text-lg font-bold text-white">Kammari Tharun</h3>
-                                <p class="text-red-500 text-xs font-semibold mt-1">Founding Co-Member</p>
-                                <span class="text-[10px] text-gray-500 mt-4">Hover to flip bio &rarr;</span>
-                            </div>
-                            <div class="team-flip-back">
-                                <h4 class="text-md font-bold text-white mb-2">Kammari Tharun</h4>
-                                <p class="text-xs text-gray-300">Co-founder driving core event photography and technical media operations.</p>
-                            </div>
-                        </div>
+                    <div class="committee-card" data-name="Kammari Tharun" data-role="Founding Co-Member">
+                        <img src="https://placehold.co/120x120/1f2937/ffffff?text=KT" alt="Kammari Tharun" class="committee-avatar mb-4">
+                        <h3 class="text-lg font-bold text-white">Kammari Tharun</h3>
+                        <span class="committee-role-badge">Founding Co-Member</span>
+                        <p class="text-xs text-gray-400 leading-relaxed">Co-founder driving core event photography and technical media operations.</p>
                     </div>
 
                     <!-- Member 3: N.Bhavana -->
-                    <div class="team-flip-card" data-name="N.Bhavana" data-role="Design Lead">
-                        <div class="team-flip-inner">
-                            <div class="team-flip-front">
-                                <img src="https://placehold.co/120x120/1f2937/ffffff?text=NB" alt="N.Bhavana" class="w-20 h-20 rounded-full mb-4 object-cover border border-red-500/30">
-                                <h3 class="text-lg font-bold text-white">N.Bhavana</h3>
-                                <p class="text-red-500 text-xs font-semibold mt-1">Design Lead</p>
-                                <span class="text-[10px] text-gray-500 mt-4">Hover to flip bio &rarr;</span>
-                            </div>
-                            <div class="team-flip-back">
-                                <h4 class="text-md font-bold text-white mb-2">N.Bhavana</h4>
-                                <p class="text-xs text-gray-300">Heading graphic design, posters, and visual branding across all official channels.</p>
-                            </div>
-                        </div>
+                    <div class="committee-card" data-name="N.Bhavana" data-role="Design Lead">
+                        <img src="https://placehold.co/120x120/1f2937/ffffff?text=NB" alt="N.Bhavana" class="committee-avatar mb-4">
+                        <h3 class="text-lg font-bold text-white">N.Bhavana</h3>
+                        <span class="committee-role-badge">Design Lead</span>
+                        <p class="text-xs text-gray-400 leading-relaxed">Heading graphic design, posters, and visual branding across all official channels.</p>
                     </div>
 
                     <!-- Member 4: M.Shreyesh -->
-                    <div class="team-flip-card" data-name="M.Shreyesh" data-role="Editing Lead">
-                        <div class="team-flip-inner">
-                            <div class="team-flip-front">
-                                <img src="https://placehold.co/120x120/1f2937/ffffff?text=MS" alt="M.Shreyesh" class="w-20 h-20 rounded-full mb-4 object-cover border border-red-500/30">
-                                <h3 class="text-lg font-bold text-white">M.Shreyesh</h3>
-                                <p class="text-red-500 text-xs font-semibold mt-1">Editing Lead</p>
-                                <span class="text-[10px] text-gray-500 mt-4">Hover to flip bio &rarr;</span>
-                            </div>
-                            <div class="team-flip-back">
-                                <h4 class="text-md font-bold text-white mb-2">M.Shreyesh</h4>
-                                <p class="text-xs text-gray-300">Leads video post-production, color grading, and high-end video editing workflows.</p>
-                            </div>
-                        </div>
+                    <div class="committee-card" data-name="M.Shreyesh" data-role="Editing Lead">
+                        <img src="https://placehold.co/120x120/1f2937/ffffff?text=MS" alt="M.Shreyesh" class="committee-avatar mb-4">
+                        <h3 class="text-lg font-bold text-white">M.Shreyesh</h3>
+                        <span class="committee-role-badge">Editing Lead</span>
+                        <p class="text-xs text-gray-400 leading-relaxed">Leads video post-production, color grading, and high-end video editing workflows.</p>
                     </div>
 
                     <!-- Member 5: P. Sai Sradha -->
-                    <div class="team-flip-card" data-name="P. Sai Sradha" data-role="Public Relations Lead">
-                        <div class="team-flip-inner">
-                            <div class="team-flip-front">
-                                <img src="https://placehold.co/120x120/1f2937/ffffff?text=SS" alt="P. Sai Sradha" class="w-20 h-20 rounded-full mb-4 object-cover border border-red-500/30">
-                                <h3 class="text-lg font-bold text-white">P. Sai Sradha</h3>
-                                <p class="text-red-500 text-xs font-semibold mt-1">Public Relations Lead</p>
-                                <span class="text-[10px] text-gray-500 mt-4">Hover to flip bio &rarr;</span>
-                            </div>
-                            <div class="team-flip-back">
-                                <h4 class="text-md font-bold text-white mb-2">P. Sai Sradha</h4>
-                                <p class="text-xs text-gray-300">Managing press relations, event announcements, and inter-department communications.</p>
-                            </div>
-                        </div>
+                    <div class="committee-card" data-name="P. Sai Sradha" data-role="Public Relations Lead">
+                        <img src="https://placehold.co/120x120/1f2937/ffffff?text=SS" alt="P. Sai Sradha" class="committee-avatar mb-4">
+                        <h3 class="text-lg font-bold text-white">P. Sai Sradha</h3>
+                        <span class="committee-role-badge">Public Relations Lead</span>
+                        <p class="text-xs text-gray-400 leading-relaxed">Managing press relations, event announcements, and inter-department communications.</p>
                     </div>
 
                     <!-- Member 6: V. Harshavardhan -->
-                    <div class="team-flip-card" data-name="V. Harshavardhan" data-role="Cinematography Lead">
-                        <div class="team-flip-inner">
-                            <div class="team-flip-front">
-                                <img src="https://placehold.co/120x120/1f2937/ffffff?text=VH" alt="V. Harshavardhan" class="w-20 h-20 rounded-full mb-4 object-cover border border-red-500/30">
-                                <h3 class="text-lg font-bold text-white">V. Harshavardhan</h3>
-                                <p class="text-red-500 text-xs font-semibold mt-1">Cinematography Lead</p>
-                                <span class="text-[10px] text-gray-500 mt-4">Hover to flip bio &rarr;</span>
-                            </div>
-                            <div class="team-flip-back">
-                                <h4 class="text-md font-bold text-white mb-2">V. Harshavardhan</h4>
-                                <p class="text-xs text-gray-300">Directing camera operators and lighting setups for major campus video shoots.</p>
-                            </div>
-                        </div>
+                    <div class="committee-card" data-name="V. Harshavardhan" data-role="Cinematography Lead">
+                        <img src="https://placehold.co/120x120/1f2937/ffffff?text=VH" alt="V. Harshavardhan" class="committee-avatar mb-4">
+                        <h3 class="text-lg font-bold text-white">V. Harshavardhan</h3>
+                        <span class="committee-role-badge">Cinematography Lead</span>
+                        <p class="text-xs text-gray-400 leading-relaxed">Directing camera operators and lighting setups for major campus video shoots.</p>
                     </div>
 
                     <!-- Member 7: K. Ananya -->
-                    <div class="team-flip-card" data-name="K. Ananya" data-role="Content & Journalism Lead">
-                        <div class="team-flip-inner">
-                            <div class="team-flip-front">
-                                <img src="https://placehold.co/120x120/1f2937/ffffff?text=KA" alt="K. Ananya" class="w-20 h-20 rounded-full mb-4 object-cover border border-red-500/30">
-                                <h3 class="text-lg font-bold text-white">K. Ananya</h3>
-                                <p class="text-red-500 text-xs font-semibold mt-1">Content Lead</p>
-                                <span class="text-[10px] text-gray-500 mt-4">Hover to flip bio &rarr;</span>
-                            </div>
-                            <div class="team-flip-back">
-                                <h4 class="text-md font-bold text-white mb-2">K. Ananya</h4>
-                                <p class="text-xs text-gray-300">Crafting compelling scripts, event write-ups, and official college media releases.</p>
-                            </div>
-                        </div>
+                    <div class="committee-card" data-name="K. Ananya" data-role="Content Lead">
+                        <img src="https://placehold.co/120x120/1f2937/ffffff?text=KA" alt="K. Ananya" class="committee-avatar mb-4">
+                        <h3 class="text-lg font-bold text-white">K. Ananya</h3>
+                        <span class="committee-role-badge">Content Lead</span>
+                        <p class="text-xs text-gray-400 leading-relaxed">Crafting compelling scripts, event write-ups, and official college media releases.</p>
                     </div>
 
                     <!-- Member 8: T. Vikram -->
-                    <div class="team-flip-card" data-name="T. Vikram" data-role="Social Media Lead">
-                        <div class="team-flip-inner">
-                            <div class="team-flip-front">
-                                <img src="https://placehold.co/120x120/1f2937/ffffff?text=TV" alt="T. Vikram" class="w-20 h-20 rounded-full mb-4 object-cover border border-red-500/30">
-                                <h3 class="text-lg font-bold text-white">T. Vikram</h3>
-                                <p class="text-red-500 text-xs font-semibold mt-1">Social Media Lead</p>
-                                <span class="text-[10px] text-gray-500 mt-4">Hover to flip bio &rarr;</span>
-                            </div>
-                            <div class="team-flip-back">
-                                <h4 class="text-md font-bold text-white mb-2">T. Vikram</h4>
-                                <p class="text-xs text-gray-300">Overseeing Instagram reels strategy, digital engagement, and channel analytics.</p>
-                            </div>
-                        </div>
+                    <div class="committee-card" data-name="T. Vikram" data-role="Social Media Lead">
+                        <img src="https://placehold.co/120x120/1f2937/ffffff?text=TV" alt="T. Vikram" class="committee-avatar mb-4">
+                        <h3 class="text-lg font-bold text-white">T. Vikram</h3>
+                        <span class="committee-role-badge">Social Media Lead</span>
+                        <p class="text-xs text-gray-400 leading-relaxed">Overseeing Instagram reels strategy, digital engagement, and channel analytics.</p>
                     </div>
 
                 </div>
