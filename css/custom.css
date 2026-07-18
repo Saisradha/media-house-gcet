@@ -424,32 +424,64 @@ h1, h2, h3, h4, .font-display {
   transform: rotate(90deg) scale(1.1);
 }
 
-/* Committee Member Cards System */
-.committee-card {
-  background: linear-gradient(145deg, rgba(25, 25, 25, 0.85), rgba(14, 14, 14, 0.85));
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
-  border-radius: 1.25rem;
-  padding: 1.75rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  transition: all 0.35s var(--ease-out-expo);
-  position: relative;
-  overflow: hidden;
+/* 3D Committee Hover Flip Cards */
+.team-flip-card {
+  perspective: 1000px;
+  height: 360px;
+  width: 100%;
+  cursor: pointer;
 }
 
-.committee-card:hover {
-  border-color: var(--glass-border-hover);
-  transform: translateY(-8px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 25px rgba(239, 68, 68, 0.25);
+.team-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+}
+
+.team-flip-card:hover .team-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.team-flip-front, .team-flip-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 1.25rem;
+  padding: 1.75rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.team-flip-front {
+  background: linear-gradient(145deg, rgba(25, 25, 25, 0.9), rgba(14, 14, 14, 0.9));
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.team-flip-back {
+  background: linear-gradient(145deg, rgba(30, 10, 10, 0.95), rgba(12, 5, 5, 0.95));
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  transform: rotateY(180deg);
+  box-shadow: 0 15px 35px rgba(239, 68, 68, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .committee-avatar {
-  width: 90px;
-  height: 90px;
+  width: 85px;
+  height: 85px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--red-primary);
@@ -457,7 +489,7 @@ h1, h2, h3, h4, .font-display {
   transition: transform 0.4s ease;
 }
 
-.committee-card:hover .committee-avatar {
+.team-flip-card:hover .committee-avatar {
   transform: scale(1.08);
   box-shadow: 0 0 30px rgba(239, 68, 68, 0.6);
 }
@@ -474,9 +506,6 @@ h1, h2, h3, h4, .font-display {
   letter-spacing: 0.03em;
   margin-top: 0.5rem;
   margin-bottom: 0.75rem;
-}
-  background: linear-gradient(145deg, rgba(26, 26, 26, 0.9), rgba(15, 15, 15, 0.9));
-  border: 1px solid var(--glass-border);
 }
 
 .team-flip-back {

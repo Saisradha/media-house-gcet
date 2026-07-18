@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 7. Team Search & Department Filter Bar
     const teamSearch = document.getElementById('team-search');
-    const teamCards = document.querySelectorAll('.committee-card, .committee-card-spotlight');
+    const teamCards = document.querySelectorAll('.team-flip-card, .committee-card-spotlight');
 
     if (teamSearch) {
         teamSearch.addEventListener('input', (e) => {
@@ -282,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const dept = (card.dataset.department || '').toLowerCase();
 
                 if (name.includes(query) || role.includes(query) || dept.includes(query)) {
-                    card.style.display = card.classList.contains('committee-card-spotlight') ? 'block' : 'flex';
+                    card.style.display = 'block';
                 } else {
                     card.style.display = 'none';
                 }
